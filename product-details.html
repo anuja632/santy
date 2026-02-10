@@ -26,7 +26,243 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-	
+	<style>
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* ===== BODY ===== */
+body{
+  background:#f4f7fa;
+}
+
+/* ===== CONTAINER ===== */
+.product-container{
+  max-width:1300px;
+  margin:60px auto;
+  background:#fff;
+  padding:30px;
+  display:grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap:40px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  border-radius:10px;
+}
+
+/* ===== LEFT GALLERY ===== */
+.product-gallery{
+  display:flex;
+  flex-direction:column;
+}
+
+.main-image-wrapper{
+  position:relative;
+}
+
+.main-image{
+  width:100%;
+  border:1px solid #ddd;
+  border-radius:8px;
+  overflow:hidden;
+}
+
+.main-image img{
+  width:100%;
+  height:520px;
+  object-fit:cover;
+  transition:0.3s;
+}
+
+/* ===== SLIDER CONTROLS (TOP RIGHT) ===== */
+.slider-controls{
+  position:absolute;
+  top:15px;
+  right:15px;
+  display:flex;
+  gap:8px;
+  z-index:10;
+}
+
+.slider-controls button{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  border:none;
+  background:rgba(0,0,0,0.6);
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.slider-controls button:hover{
+  background:#0b5fa5;
+}
+
+/* ===== THUMBNAILS ===== */
+.thumb-gallery{
+  display:flex;
+  gap:12px;
+  margin-top:15px;
+  flex-wrap:wrap;
+}
+
+.thumb-gallery img{
+  width:90px;
+  height:70px;
+  object-fit:cover;
+  border:1px solid #ccc;
+  border-radius:5px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.thumb-gallery img:hover{
+  transform:scale(1.05);
+  border-color:#0b5fa5;
+}
+
+/* ===== RIGHT CONTENT ===== */
+.product-content{
+  display:flex;
+  flex-direction:column;
+}
+
+.breadcrumb{
+  font-size:13px;
+  color:#888;
+  margin-bottom:10px;
+  letter-spacing:0.5px;
+}
+
+.product-title{
+  font-size:30px;
+  color:#222;
+  margin-bottom:15px;
+}
+
+.product-desc{
+  font-size:15px;
+  color:#555;
+  line-height:1.8;
+}
+
+.product-desc p{
+  margin-bottom:15px;
+}
+
+/* ===== BUTTONS ===== */
+.product-actions{
+  margin-top:25px;
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:13px 24px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+  font-size:14px;
+  transition:0.3s;
+  display:inline-block;
+  text-align:center;
+}
+
+.btn-quote{
+  background:#0b5fa5;
+  color:#fff;
+}
+
+.btn-quote:hover{
+  background:#094f8a;
+}
+
+.btn-contact{
+  border:2px solid #0b5fa5;
+  color:#0b5fa5;
+}
+
+.btn-contact:hover{
+  background:#0b5fa5;
+  color:#fff;
+}
+
+/* =========================
+   RESPONSIVE MEDIA QUERIES
+========================= */
+
+/* Tablets */
+@media(max-width:1024px){
+  .product-container{
+    grid-template-columns:1fr;
+  }
+
+  .main-image img{
+    height:480px;
+  }
+}
+
+/* Large Phones */
+@media(max-width:768px){
+  .product-container{
+    padding:20px;
+    margin:30px 15px;
+  }
+
+  .product-title{
+    font-size:24px;
+  }
+
+  .main-image img{
+    height:420px;
+  }
+
+  .thumb-gallery img{
+    width:75px;
+    height:60px;
+  }
+
+  .slider-controls button{
+    width:34px;
+    height:34px;
+    font-size:14px;
+  }
+}
+
+/* Mobile */
+@media(max-width:480px){
+  .product-title{
+    font-size:22px;
+  }
+
+  .main-image img{
+    height:320px;
+  }
+
+  .product-desc{
+    font-size:14px;
+  }
+
+  .product-actions{
+    flex-direction:column;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  .thumb-gallery{
+    justify-content:center;
+  }
+}
+</style>
+
 </head>
 <body id="bg">
 <div id="loading-area" class="loading-page-3">
@@ -208,19 +444,18 @@
     </nav>
 </div>
 
-
-	</div>
-    		<!-- Banner  -->
+		
+		<!-- Banner  -->
 		<div class="dz-bnr-inr dz-bnr-inr-sm overlay-black-middle text-center" style="background-image: url(images/bnr/bnr1.jpg);">
 			<div class="container">
 				<div class="dz-bnr-inr-entry">
-					<h1>Facility Management</h1>
+					<h1>Product Details </h1>
 					<!-- Breadcrumb Row -->
 					<nav aria-label="breadcrumb" class="breadcrumb-row">
 						<ul class="breadcrumb">
 							<li class="breadcrumb-item"><a href="index.html">Home</a></li>
 							<!-- <li class="breadcrumb-item">Pages</li> -->
-							<li class="breadcrumb-item active" aria-current="page">Facility Management</li>
+							<li class="breadcrumb-item active" aria-current="page">Product Details</li>
 						</ul>
 					</nav>
 					<!-- Breadcrumb Row End -->
@@ -228,230 +463,101 @@
 			</div>
 		</div>
 		<!-- Banner End -->
-<section class="content-inner bg-white">
-    <div class="container">
-        <div class="row about-style2 align-items-center">
-                        <div class="col-lg-6 m-b30">
-                <div class="row align-items-end aos-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                    <div class="col-sm-12 m-b30">
-                        <div class="about-thumb">
-                            <div class="split-box split-active">
-                                <div>
-                                    <img class="w-100" src="images/about/about5.jpg" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-lg-6 m-b30">
-                <div class="about-content aos-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
-                    <div class="section-head style-1">
-                        <h6 class="sub-title text-primary">Electrical Solutions</h6>
-                        <h3 class="title m-b20">Facility      Electrical Work</h3>
-                        <p>
-                            We provide complete facility electrical solutions for industrial, commercial, and cleanroom environments, ensuring safe, reliable, and efficient power distribution in compliance with applicable standards.
-
-                        </p>
-                        <ul  class="list-check-circle primary">
-<li>
-                            CABEL TRAY FABRICATION WORK
-                        </li>
-                        <li>TUBE LIGHT HANGING WITH TRAY</li>
-                        <li>PANEL TRMINATION</li>
-                        </ul>
-                        
-                    </div>
-                    <a href="about-us.html" class="btn btn-primary">
-                        READ MORE <i class="fas fa-long-arrow-alt-right m-l15"></i>
-                    </a>
-                </div>
-            </div>
 
 
-        </div>
+
+<section class="product-container">
+
+  <!-- LEFT IMAGE SECTION -->
+  <div class="product-gallery">
+
+    <div class="main-image-wrapper">
+
+      <!-- SLIDER BUTTONS -->
+      <div class="slider-controls">
+        <button onclick="prevImg()">❮</button>
+        <button onclick="nextImg()">❯</button>
+      </div>
+
+      <div class="main-image">
+        <img id="mainImg" src="images/Products/conveyor.jpg" alt="Modular Belt Conveyor">
+      </div>
     </div>
-</section>
-<section class="content-inner bg-white">
-	<div class="container">
-		<div class="section-head text-center style-1">
-			<h5 class="text-primary sub-title">Our Expertise</h5>
-			<h2 class="title">Industries We Serve</h2>
-		</div>
 
-		<div class="row justify-content-center">
-
-			<!-- Electronics & Semiconductor -->
-			<div class="col-lg-4 col-md-6 aos-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-				<div class="icon-bx-wraper center style-5 m-b30">
-					<div class="icon-bx-lg rounded-0 text-primary" data-num="1">
-						<i class="flaticon-bulb"></i>
-					</div>
-					<div class="icon-content">
-						<h4 class="dz-title">Electronics & Semiconductor</h4>
-						<p>Advanced cleanroom solutions, precision handling systems, and contamination-controlled environments for high-tech manufacturing.</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Automotive -->
-			<div class="col-lg-4 col-md-6 aos-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
-				<div class="icon-bx-wraper center style-5 m-b30">
-					<div class="icon-bx-lg rounded-0 text-primary" data-num="2">
-						<i class="flaticon-cogwheel-1"></i>
-					</div>
-					<div class="icon-content">
-						<h4 class="dz-title">Automotive</h4>
-						<p>Smart automation systems, conveyor integration, and efficient production flow solutions for automotive manufacturing.</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- Manufacturing & Assembly -->
-			<div class="col-lg-4 col-md-6 aos-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
-				<div class="icon-bx-wraper center style-5 m-b30">
-					<div class="icon-bx-lg rounded-0 text-primary" data-num="3">
-						<i class="flaticon-factory"></i>
-					</div>
-					<div class="icon-content">
-						<h4 class="dz-title">Manufacturing & Assembly</h4>
-						<p>Custom-built production lines, modular conveyors, and scalable industrial solutions for modern factories.</p>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</section>
-
-
-<section class="content-inner section" style="background-image:url('images/background/bg5.jpg');background-size:cover;background-position:bottom;">
-    <div class="container">
-        <div class="row about-style10">
-            <div class="col-lg-6 m-b30 align-self-center aos-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
-                <div class="about-content">
-                    <div class="section-head style-1">
-                        <h5 class="sub-title text-primary">Scope of Work</h5>
-                        <h2 class="title m-b20">Complete Electrical Solutions</h2>
-                        <p>We provide comprehensive electrical services for industrial, commercial, and cleanroom environments, ensuring safe, reliable, and efficient power distribution in compliance with applicable standards.</p>
-                    </div>
-                    <ul class="list-check-circle primary">
-                        <li>Electrical layout planning and execution.</li>
-                        <li>Power distribution panel installation (LT panels, DBs).</li>
-                        <li>Internal and external electrical wiring.</li>
-                        <li>Lighting systems installation (LED, emergency lighting).</li>
-                        <li>Earthing and lightning protection systems.</li>
-                        <li>Cable tray and conduit installation.</li>
-                        <li>Machine power point and socket installations.</li>
-                        <li>UPS and DG power connectivity.</li>
-                        <li>Testing, commissioning, and safety compliance.</li>
-                    </ul>
-                    <a href="services.html" class="btn btn-primary btn-border m-r10 m-b10">VIEW MORE</a>
-                </div>
-            </div>
-
-            <div class="col-lg-6 m-b30 aos-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="600">
-                <div class="dz-media h-100">    
-                    <img class="h-100 object-cover" src="images/about/about17.jpg" alt="Electrical Work">
-                </div>
-            </div>
-        </div>
+    <!-- THUMBNAILS -->
+    <div class="thumb-gallery">
+      <img src="images/Products/conveyor.jpg" onclick="setImg(0)">
+      <img src="images/Products/busbar-trunking.jpg" onclick="setImg(1)">
+      <img src="images/Products/busbar-grounding.jpg" onclick="setImg(2)">
+      <img src="images/Products/cda-vacuum.jpg" onclick="setImg(3)">
     </div>
+
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="product-content">
+
+    <div class="breadcrumb">HOME / CONVEYORS</div>
+
+    <h1 class="product-title">Modular Belt Conveyor</h1>
+
+    <div class="product-desc">
+      <p>
+        Modular belt conveyor is mainly composed of modular belts and steel frame support. 
+        Besides, there are other accessories like drive motor, control box, sprockets, brackets, 
+        guides, wear strips, leveling feet, tensioners, flanges, and so on.
+      </p>
+
+      <p>
+        Modular belt conveyors are a middle ground between belt conveyors and chain conveyors. 
+        A modular belt consists of individual plastic modules linked together with joint rods. 
+        This design allows it to handle hot workpieces and sharp-edged materials.
+      </p>
+
+      <p>
+        Plastic modular belts are easy to maintain, easy to clean, highly durable, and resistant 
+        to abrasion, making them ideal for industrial, food, pharma, and packaging applications.
+      </p>
+    </div>
+
+    <div class="product-actions">
+      <a href="#quote" class="btn btn-quote">Get Quote</a>
+      <a href="#contact" class="btn btn-contact">Contact Us</a>
+    </div>
+
+  </div>
+
 </section>
 
-<section class="content-inner-6">
-    
-			<div class="container">
-                    <div class="section-head style-1 text-center aos-item" data-aos="fade-up" data-aos-duration="800" data-aos-delay="400">
-                    <h5 class="sub-title text-primary">Clean Booth Solutions</h5>
-<h2 class="title m-b20">PRECISION CLEAN BOOTH WORKS</h2>
+<!-- ===== JS SLIDER ===== -->
+<script>
+const images = [
+  "images/Products/conveyor.jpg",
+  "images/Products/busbar-trunking.jpg",
+  "images/Products/busbar-grounding.jpg",
+  "images/Products/cda-vacuum.jpg"
+];
 
-                </div>
-				<div class="swiper-container clients-swiper swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
-					<div class="swiper-wrapper" id="swiper-wrapper-15991f4069296142" aria-live="off" style="transform: translate3d(-1798.5px, 0px, 0px); transition-duration: 0ms;"><div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="7 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="0">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="100">
-								<img class="logo-main" src="images/gallery/gallery1.jpg" alt="">
-							</div>
-						</div><div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="8 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="1">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="200">
-								<img class="logo-main" src="images/gallery/gallery2.jpg" alt="">
-							</div>
-						</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" role="group" aria-label="9 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="2">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="300">
-								<img class="logo-main" src="images/gallery/gallery3.jpg" alt="">
-							</div>
-						</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" role="group" aria-label="10 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="3">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="400">
-								<img class="logo-main" src="images/gallery/gallery4.jpg" alt="">
-							</div>
-						</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" role="group" aria-label="11 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="4">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="500">
-								<img class="logo-main" src="images/gallery/gallery5.jpg" alt="">
-							</div>
-						</div><div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="12 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="5">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="600">
-								<img class="logo-main" src="images/gallery/gallery6.jpg" alt="">
-							</div>
-						</div>
-						<div class="swiper-slide" role="group" aria-label="7 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="0">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="100">
-								<img class="logo-main" src="images/gallery/gallery1.jpg" alt="">
-							</div>
-						</div>	
-						<div class="swiper-slide" role="group" aria-label="8 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="1">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="200">
-								<img class="logo-main" src="images/gallery/gallery2.jpg" alt="">
-							</div>
-						</div>	
-						<div class="swiper-slide swiper-slide-prev" role="group" aria-label="9 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="2">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="300">
-								<img class="logo-main" src="images/gallery/gallery3.jpg" alt="">
-							</div>
-						</div>	
-						<div class="swiper-slide swiper-slide-active" role="group" aria-label="10 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="3">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="400">
-								<img class="logo-main" src="images/gallery/gallery4.jpg" alt="">
-							</div>
-						</div>	
-						<div class="swiper-slide swiper-slide-next" role="group" aria-label="11 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="4">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="500">
-								<img class="logo-main" src="images/gallery/gallery5.jpg" alt="">
-							</div>
-						</div>	
-						<div class="swiper-slide" role="group" aria-label="12 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="5">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="600">
-								<img class="logo-main" src="images/gallery/gallery6.jpg" alt="">
-							</div>
-						</div>	
-					<div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="7 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="0">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="100">
-								<img class="logo-main" src="images/gallery/gallery1.jpg" alt="">
-							</div>
-						</div><div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="8 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="1">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="200">
-								<img class="logo-main" src="images/gallery/gallery2.jpg" alt="">
-							</div>
-						</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" role="group" aria-label="9 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="2">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="300">
-								<img class="logo-main" src="images/gallery/gallery3.jpg" alt="">
-							</div>
-						</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" role="group" aria-label="10 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="3">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="400">
-								<img class="logo-main" src="images/gallery/gallery4.jpg" alt="">
-							</div>
-						</div><div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" role="group" aria-label="11 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="4">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="500">
-								<img class="logo-main" src="images/gallery/gallery5.jpg" alt="">
-							</div>
-						</div><div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="12 / 18" style="width: 169.833px; margin-right: 30px;" data-swiper-slide-index="5">
-							<div class="clients-logo aos-item aos-init aos-animate" data-aos="fade-in" data-aos-duration="800" data-aos-delay="600">
-								<img class="logo-main" src="images/gallery/gallery6.jpg" alt="">
-							</div>
-						</div></div>
-				<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-			</div>
-		</section>
+ 
+let currentIndex = 0;
+
+function setImg(index){
+  currentIndex = index;
+  document.getElementById("mainImg").src = images[currentIndex];
+}
+
+function nextImg(){
+  currentIndex = (currentIndex + 1) % images.length;
+  document.getElementById("mainImg").src = images[currentIndex];
+}
+
+function prevImg(){
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  document.getElementById("mainImg").src = images[currentIndex];
+}
+</script>
+
+	
 
 	<footer class="site-footer style-2" id="footer">
 		<div class="footer-top" style="background-image:url('images/background/bg2.png');">
